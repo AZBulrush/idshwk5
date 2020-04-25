@@ -28,7 +28,6 @@ def initData(filename):
 			name = tokens[0]
 			label = tokens[1]
 			length = len(name)
-			
 			domainlist.append(Domain(name,label,length))
 
 def main():
@@ -41,27 +40,24 @@ def main():
 
 	clf = RandomForestClassifier(random_state=0)
 	clf.fit(featureMatrix,labelList)
-	
 	filename2 = 'test.txt'
 	filename3 = 'result.txt'
 	with open(filename3,'a') as resf:
-         with open(filename2) as testf:
-	        for line in testf:
-			    line = line.strip()
-			    if line.startswith("#") or line =="":
-				    continue
+		with open(filename2) as testf:
+			for line in testf:
+				line = line.strip()
+				if line.startswith("#") or line =="":
+					continue
 				tokens = line.split(",")
-			    tname = tokens[0]
-			    tlength = [len(tname)]
-			    tlable = clf.predict([tlength])	
-                ttlable=""				
-			    if tlable == 0
-				    ttlable = "notdga"
+				tname = tokens[0]
+				tlength = [len(tname)]
+				tlable = clf.predict([tlength])	
+				ttlable=""
+				if tlable == 0
+					ttlable = "notdga"
 				else:
-				    ttlable = "dga"
+					ttlable = "dga"
 				resf.write(str(tname)+str(",")+str(ttlable)+'\n')
-			
-	
 
 
 if __name__ == '__main__':
