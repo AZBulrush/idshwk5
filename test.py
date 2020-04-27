@@ -53,7 +53,7 @@ def main():
 				tlength = [len(tname)]
 				tlable = clf.predict([tlength])	
 				ttlable=""
-				if tlable == 0
+				if tlable == 0:
 					ttlable = "notdga"
 				else:
 					ttlable = "dga"
